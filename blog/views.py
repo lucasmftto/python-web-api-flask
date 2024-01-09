@@ -1,9 +1,11 @@
 from flask import (
-    Blueprint, abort, redirect, render_template, request, url_for
+    Blueprint, abort, redirect, render_template, request, url_for, session
 )
 from blog.posts import (
     get_all_posts, get_post_by_slug, new_post
 )
+from flask_simplelogin import login_required
+
 
 bp = Blueprint('post', __name__, template_folder='templates')
 
@@ -23,6 +25,7 @@ def detail(slug):
 
 
 @bp.route('/new', methods=['GET', 'POST'])
+@login_required()
 def new():
     if request.method == 'POST':
         title = request.form.get('title')
