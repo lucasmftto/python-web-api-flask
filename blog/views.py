@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, abort, redirect, render_template, request, url_for, session
+    Blueprint, abort, redirect, render_template, request, url_for
 )
 from blog.posts import (
     get_all_posts, get_post_by_slug, new_post
